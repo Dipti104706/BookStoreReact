@@ -1,10 +1,14 @@
 .copyrights{
-    font-family: Arial, Helvetica, sans- serif;
+    font-size: 11px;
     margin-Left: 150px;
+    color: white;
 }
 .footer{
     display: flex;
+    align-items: center;
     position: relative;
     top: 600px;
-    height: 53px;
+    width: 100vw;
+    height: 41px;
+    background-color: #3c2e2e;
 }  

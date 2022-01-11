@@ -5,7 +5,7 @@ function FooterCopyrights() {
     return (
         <div className="footer">
             <div className="copyrights">
-                Copyright © 2021, eBookstore Private Limited. All Rights Reserved.
+                Copyright © 2022, eBookstore Private Limited. All Rights Reserved.
             </div>           
         </div>
     )
