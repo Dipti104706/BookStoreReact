@@ -1,0 +1,44 @@
+.Signin{
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    width: 252px;
+    height: 318px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.image{
+    width: 195px;
+    border-radius: 50%;
+}
+
+.text{
+    color: #0A0102;   
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.Login1{
+    width: 311px;
+    height: 361px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}

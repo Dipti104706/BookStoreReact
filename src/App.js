@@ -1,15 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import Signin from './pages/signin/Signin';
-import Signup from './pages/signup/Signup';
 import ResetPassword from './pages/resetPassword/ResetPassword';
+import SigninSignup from './pages/signinSignup/SigninSignup';
+import RouterDom from './pages/router/Router';
+
 
 function App() {
   return (
     <div>
-        {/* <Signin/> */}
-        {/* <Signup/> */}
-        <ResetPassword/>
+        {/* <ResetPassword/> */}
+        {/* <SigninSignup/> */}
+        <RouterDom/>
     </div>
   );
 }
