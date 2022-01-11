@@ -1,0 +1,10 @@
+.copyrights{
+    font-family: Arial, Helvetica, sans- serif;
+    margin-Left: 150px;
+}
+.footer{
+    display: flex;
+    position: relative;
+    top: 600px;
+    height: 53px;
+}  

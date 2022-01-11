@@ -1,8 +1,10 @@
 import React from 'react'
 import { Input, Space, Button } from 'antd';
-import './Signin.css'
+import './Signin.css';
 import "antd/dist/antd.css";
 import { useHistory } from "react-router-dom";
+import { login } from '../../services/UserServices';
+
 
 function Signin(props) {
     let history = useHistory()
@@ -34,14 +36,14 @@ function Signin(props) {
             // })
         }  
         else if((emailRegex.test(loginObj.email)==false) && (psRegex.test(loginObj.password)==true)){
-            setloginError({emailBorder:"1px solid red",emailErrorMsg:"Invalid email",psBorder:"",psErrorMsg:""})
+            setloginError({emailBorder:"1px solid red",emailErrorMsg:"red",psBorder:"",psErrorMsg:""})
         }
         else if((psRegex.test(loginObj.password)==false) && (emailRegex.test(loginObj.email)==true)){
-            setloginError({emailBorder:"",emailErrorMsg:"",psBorder:"1px solid red",psErrorMsg:"Invalid password"})
+            setloginError({emailBorder:"",emailErrorMsg:"",psBorder:"1px solid red",psErrorMsg:"red"})
         }        
         else {
             console.log(false)
-            setloginError({emailBorder:"1px solid red",emailErrorMsg:"Invalid email",psBorder:"1px solid red",psErrorMsg:"Invalid password"})
+            setloginError({emailBorder:"1px solid red",emailErrorMsg:"red",psBorder:"1px solid red",psErrorMsg:"red"})
         }       
     }
 
@@ -55,15 +57,15 @@ function Signin(props) {
                 <div className="div" >LOGIN
                 <button class="tab-btn" ></button>
                 </div>
-                <div className="div" onClick={takeclick}>SIGNUP
+                <div className="div" style={{color: '#878787'}} onClick={takeclick}>SIGNUP
                     <button class="tab-btn2" ></button>
                 </div>
             </div>
             <div className="credentials">
-                <h6>EmailId</h6>
+                <h6 style={{color:loginError.emailErrorMsg}}>EmailId</h6>
                 <Input style={{border:loginError.emailBorder}} onChange={takeEmail}/>
                 {/* <p id="error">{loginError.emailErrorMsg}</p>                */}
-                <h6>Password</h6>
+                <h6 style={{color:loginError.psErrorMsg}}>Password</h6>
                 <Space direction="vertical">
                     <Input.Password style={{border:loginError.psBorder}} onChange={takePassword}/>                   
                 </Space>

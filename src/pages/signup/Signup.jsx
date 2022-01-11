@@ -12,8 +12,8 @@ function Signup(props) {
     return (
         <div className="Login">
             <div className="buttons">
-                <div className="div" onClick={takeclick}>LOGIN
-                <button class="tab-btn1" ></button>
+                <div className="div" style={{color: '#878787'}} onClick={takeclick}>LOGIN
+                    <button class="tab-btn1" ></button> 
                 </div>
                 <div className="div">SIGNUP
                     <button class="tab-btn"></button>
