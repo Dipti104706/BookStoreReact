@@ -51,11 +51,11 @@ function HeaderForLogin() {
                                 <div style={{color:'#dbd2d2',marginLeft:12}}>____________________________</div>
                                 <div className="division">
                                     <img src = {order} alt = "profile" className = "icons"/>
-                                    <p className = "tags" onClick={()=>(history.push('/orders'))}>My Orders</p>
+                                    <p className = "tags" onClick={()=>(history.push('/please'))}>My Orders</p>
                                 </div>
                                 <div className="division">
                                     <img src = {heart} alt = "profile" className = "icons"/>
-                                    <p className = "tags" onClick={()=>(history.push('/wishlist'))}>My Wishlist</p>
+                                    <p className = "tags" onClick={()=>(history.push('/please'))}>My Wishlist</p>
                                 </div>
                             </div>
                         </Box>

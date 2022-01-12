@@ -1,0 +1,22 @@
+.extra{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 70vh;
+    position: relative;
+    left:100px;
+    top:55px;
+    gap:4px;
+    justify-content:center ;
+    align-items: center;
+}
+
+.please{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logintoview{
+    font-size: 14px;
+    color: rgb(187, 185, 185);
+}
