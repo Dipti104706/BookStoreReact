@@ -2,9 +2,9 @@ import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
   } from "react-router-dom";
+import Dashboard from '../dashboard/Dashboard';
 import ResetPassword from '../resetPassword/ResetPassword';
 import SigninSignup from '../signinSignup/SigninSignup';
 
@@ -14,6 +14,7 @@ function RouterDom() {
              <Switch>
                   <Route path = "/" exact component = {SigninSignup}/>
                   <Route path = "/forgotpassword" component = {ResetPassword}/>
+                  <Route path = "/dashboard" component = {Dashboard}/>
              </Switch>
         </Router>
     )

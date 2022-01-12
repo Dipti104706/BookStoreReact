@@ -14,8 +14,8 @@ function App() {
     <div>
         {/* <ResetPassword/> */}
         {/* <SigninSignup/> */}
-        {/* <RouterDom/> */}
-        <Dashboard/>
+        <RouterDom/>
+        {/* <Dashboard/> */}
     </div>
   );
 }
