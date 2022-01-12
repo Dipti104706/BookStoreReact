@@ -1,0 +1,24 @@
+.Welcome{
+    font-size: 13px;
+    color: black;
+    font-weight: 600;
+    position: relative;
+    left:10px;
+    top:15px;
+}
+
+.info{
+    margin-left: 10px;
+    color: rgb(158, 157, 157);
+    height: 26px;
+}
+
+.popper1{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 175px;
+    justify-content: center;
+    box-shadow: 5px 5px 5px -5px gray,
+    -5px 0 5px -5px gray;
+}
