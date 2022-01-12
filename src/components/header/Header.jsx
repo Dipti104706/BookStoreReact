@@ -15,6 +15,7 @@ import Fade from '@mui/material/Fade';
 import { useHistory } from 'react-router';
 
 function BookHeader() {
+    let history = useHistory()
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -35,7 +36,7 @@ function BookHeader() {
             </div>
             <div className="Search">
                 <img className="Search-logo" src={search} alt="search"/>
-                <Input className="Search-Text" style={{background:'rgb(255 255 255)',borderColor:'rgb(255 255 255)',width:300}} placeholder="Search..."/>           
+                <Input className="Search-Text" style={{background:'rgb(255 255 255)',borderColor:'rgb(255 255 255)',width:300, height:28}} placeholder="Search..."/>           
             </div>
             <div className="profile" onClick={handleClick}>
                 <img src = {profile} className = "mainprofilelogo"/>
@@ -52,11 +53,11 @@ function BookHeader() {
                                 </div>
                                 <div className="division">
                                     <img src = {order} alt = "profile" className = "icons"/>
-                                    <p className = "tags">My Orders</p>
+                                    <p className = "tags" onClick={()=>(history.push('/orders'))}>My Orders</p>
                                 </div>
                                 <div className="division">
                                     <img src = {heart} alt = "profile" className = "icons"/>
-                                    <p className = "tags">My Wishlist</p>
+                                    <p className = "tags" onClick={()=>(history.push('/wishlist'))}>My Wishlist</p>
                                 </div>
                                 <button className = "logout">Logout</button>
                             </div>
