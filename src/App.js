@@ -15,9 +15,7 @@ function App() {
         {/* <ResetPassword/> */}
         {/* <SigninSignup/> */}
         {/* <RouterDom/> */}
-        {/* <FooterCopyrights/> */}
-        <BookHeader/>
-        {/* <Dashboard/> */}
+        <Dashboard/>
     </div>
   );
 }

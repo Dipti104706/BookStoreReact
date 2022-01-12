@@ -67,6 +67,49 @@
     align-items: center;
     border: 1px solid rgb(153 16 16);
 }
+
 .cartlogo{
     width: 18px;
+}
+
+.popper{
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 166px;
+    justify-content: center;
+    box-shadow: 5px 5px 5px -5px gray,
+    -5px 0 5px -5px gray;
+}
+
+.hello{
+    font-size: 13px;
+    color: black;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.division{
+    display: flex;
+    margin-left: 10px;
+}
+
+.icons{
+    width:13px;
+    height:16px;
+}
+
+.tags{
+    font-size: 11px;
+    color: rgb(158, 157, 157);
+    margin-left: 10px;
+}
+
+.logout{
+    width: 132px;
+    color: rgb(205 6 6);
+    border: 1px solid rgb(245 129 129);
+    border-radius: 2px;
+    background-color: white;
+    margin-left: 10px;
 }
