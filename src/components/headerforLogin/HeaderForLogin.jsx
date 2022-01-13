@@ -47,7 +47,7 @@ function HeaderForLogin() {
                             <div className="popper1">
                                 <p className = "Welcome">Welcome</p>
                                 <div className="info">To access account and manage orders</div>
-                                <button className = "logout">LOGIN/SIGNUP</button>
+                                <button className = "logout"  onClick={()=>(history.push('/'))}>LOGIN/SIGNUP</button>
                                 <div style={{color:'#dbd2d2',marginLeft:12}}>____________________________</div>
                                 <div className="division">
                                     <img src = {order} alt = "profile" className = "icons"/>
@@ -64,7 +64,7 @@ function HeaderForLogin() {
                 </Popper>
             </div>
             <div className="cart">
-                <img src = {cart} className = "cartlogo"/>
+                <img src = {cart} onClick={()=>(history.push('/cart'))} className = "cartlogo"/>
                 <div>Cart</div>
             </div>            
         </div>

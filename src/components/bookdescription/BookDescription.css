@@ -1,0 +1,71 @@
+.bookDesp{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70vw;
+    height: fit-content;
+    position: relative;
+    left: 161px;
+    gap: 5px;
+}
+
+.wholePart{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 50px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.imagepart{
+    width: 18vw;
+    height: 305px;
+    border: 1px solid rgb(211, 209, 209);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.despPart{
+    width: 70vw;
+}
+.bookimge{
+    width: 202px;
+    height: 264px;
+}
+
+#line{
+    width:514px;
+    height:1px;
+    background-color: rgb(185, 184, 184);
+}
+
+.allBookDetails{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.dot2{
+    width: 7px;
+    height: 7px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.bookDet{
+    width: 509px;
+    height: 167px;
+    text-align: justify;
+}
+
+.addto{
+    display: flex;
+    flex-direction: row;
+}
+
