@@ -1,0 +1,7 @@
+.mainNotesContainer{
+    height: fit-content;
+    border: 1px solid white;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+}

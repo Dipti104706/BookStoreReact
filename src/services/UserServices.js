@@ -15,3 +15,8 @@ export const forgotpassword=async(email) => {
     let response=await axios.post(`https://localhost:44329/api/User/forgot?email=${email}`,"")
     return response
 }
+
+export const getBooks = async() =>{
+    let response = await axios.get(`https://localhost:44329/api/Book/getAllBooks`)
+    return response
+}

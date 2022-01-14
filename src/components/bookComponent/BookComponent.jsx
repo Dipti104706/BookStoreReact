@@ -3,25 +3,25 @@ import book from '../../assets/dont1.png';
 import star from '../../assets/starlogo.jpg';
 import './BookComponent.css';
 
-function BookComponent() {
+function BookComponent(props) {
     return (
         <div className = "Bookcontainer">
             <div class="Imagepart">
-                <img className="BookImg" src={book}/>
+                <img className="BookImg" src={props.allBooks.image}/>
             </div>
             <div className="Detailspart">  
-                <div className="bookName">Don't Make Me Think</div>   
-                <div className="authorname">by Steve Krug</div>  
+                <div className="bookName">{props.allBooks.bookName}</div>   
+                <div className="authorname">{props.allBooks.authorName}</div>  
                 <div className="options">
                     <div className="ratings">
-                        <span className="rating">4.5</span>
+                        <span className="rating">{props.allBooks.rating}</span>
                         <img src={star} className = "starlogo" />
                     </div>
-                    <span className = "reviewer">(20)</span>
+                    <span className = "reviewer">({props.allBooks.reviewer})</span>
                 </div>                                 
                 <div className="price">
-                    <div className="discount">Rs. 1500</div>
-                    <div className="original">Rs. 2000</div>
+                    <div className="discount">Rs. {props.allBooks.discountPrice}</div>
+                    <div className="original">Rs. {props.allBooks.originalPrice}</div>
                 </div>
             </div>                
         </div>
