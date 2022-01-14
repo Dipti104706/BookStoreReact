@@ -2,15 +2,16 @@ import React from 'react';
 import { Input, Space } from 'antd';
 import './Signup.css'
 import "antd/dist/antd.css";
+import { register } from '../../services/UserServices';
 
 function Signup(props) {
     const nameRegex=/^[A-Z]{1}[a-z]{2,}$/
     const emailSignUpRegex=/^[a-zA-Z0-9]+[._+-]{0,1}[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.[a-zA-Z]{2,10}[.]*[a-zA-Z]*$/
-    const psSignUpRegex=/^[a-zA-Z0-9]{1,}[A-Z]*[0-9]*[@&#%$*_-]*[a-zA-Z0-9]*$/
+    const psSignUpRegex=/^[a-zA-Z0-9]{1,}[A-Z]*[0-9]*[@&#%$*_-]+[a-zA-Z0-9]*$/
     const numberRegex=/^[0-9]{10}$/
 
     const[signUpError,setSignUpError]=React.useState({firstBorder:"",firstErrorMsg:"",lastBorder:"",lastErrorMsg:"",emailSignUpBorder:"",emailSignUpErrorMsg:"",psSignUpBorder:"",psSignUpErrorMsg:""})
-    const[signUpObj,setSignUpObj]=React.useState({firstNameSign:"",emailSign:"",passwordSign:"",numberSign:""})
+    const[signUpObj,setSignUpObj]=React.useState({firstNameSign:"",emailSign:"",passwordSign:"",numberSign:null})
     
     const takeFirstName=(e) => {
         setSignUpObj({...signUpObj,firstNameSign:e.target.value})
@@ -25,21 +26,23 @@ function Signup(props) {
     }
 
     const takeNumber=(e) => {
-        setSignUpObj({...signUpObj,numberSign:e.target.value})
+        setSignUpObj({...signUpObj,numberSign:parseFloat(e.target.value)})
     }
 
-    const register=() => {
+    const signup=() => {
         console.log(signUpObj)
         if((nameRegex.test(signUpObj.firstNameSign)===true) && (numberRegex.test(signUpObj.numberSign)===true) && (emailSignUpRegex.test(signUpObj.emailSign)===true) && (psSignUpRegex.test(signUpObj.passwordSign)===true)) {
             console.log(true)
             setSignUpError("")
-            // const signUpDb={firstName:signUpObj.firstNameSign,lastName:signUpObj.lastNameSign,email:signUpObj.emailSign,password:signUpObj.passwordSign};
-            // signup(signUpDb).then((resp) => {   //then used for resolve stage of promise, grom the login async send a promise 
-            //     console.log(resp)
-            //     history.push('/')
-            // }).catch((err) => {           //catch used for reject stage
-            //     console.log(err)
-            // })
+            const signUpDb={name:signUpObj.firstNameSign,email:signUpObj.emailSign,password:signUpObj.passwordSign,phone:signUpObj.numberSign};
+            console.log(signUpDb);
+            register(signUpDb).then((resp) => {   //then used for resolve stage of promise, grom the login async send a promise 
+                console.log(resp)
+                alert("User Registration successful, please log");
+                props.listenSigninSignup(true);
+            }).catch((err) => {           //catch used for reject stage
+                console.log(err)
+            })
         }     
         else if((nameRegex.test(signUpObj.firstNameSign)===false) &&  (numberRegex.test(signUpObj.numberSign)===true) && (emailSignUpRegex.test(signUpObj.emailSign)===true) && (psSignUpRegex.test(signUpObj.passwordSign)===true)){
             console.log(false)
@@ -58,7 +61,6 @@ function Signup(props) {
             setSignUpError({psSignUpBorder:"1px solid red",psSignUpErrorMsg:"Invalid password"})
         }
         else{
-            console.log("ggggg")
             setSignUpError({firstBorder:"1px solid red",firstErrorMsg:"Enter fullname",lastBorder:"1px solid red",lastErrorMsg:"Enter Number",emailSignUpBorder:"1px solid red",emailSignUpErrorMsg:"Enter email",psSignUpBorder:"1px solid red",psSignUpErrorMsg:"Enter password"})
         }
     }
@@ -93,7 +95,7 @@ function Signup(props) {
                 <Input style={{border:signUpError.lastBorder,width:245}} onChange={takeNumber} placeholder="" />
                 <p id="error1">{signUpError.lastErrorMsg}</p>
             </div> 
-            <button onClick={register} className="loginButton">Signup</button>
+            <button onClick={signup} className="loginButton">Signup</button>
         </div>
     )
 }

@@ -9,7 +9,7 @@ import { login } from '../../services/UserServices';
 function Signin(props) {
     let history = useHistory()
     const emailRegex=/^[a-zA-Z0-9]+[._+-]{0,1}[a-zA-Z0-9]*@[a-zA-Z0-9]{1,10}.[a-zA-Z]{2,10}[.]*[a-zA-Z]*$/
-    const psRegex=/^[a-zA-Z0-9]{1,}[A-Z]*[0-9]*[@&#%$*_-]*[a-zA-Z0-9]*$/
+    const psRegex=/^[a-zA-Z0-9]{1,}[A-Z]*[0-9]*[@&#%$*_-]+[a-zA-Z0-9]*$/
 
     const[loginError,setloginError]=React.useState({emailBorder:"",emailErrorMsg:"",psBorder:"",psErrorMsg:""})
     const[loginObj,setLoginObj]=React.useState({email:"",password:""})
@@ -26,14 +26,14 @@ function Signin(props) {
         if((emailRegex.test(loginObj.email)===true) && (psRegex.test(loginObj.password)===true)) {
             console.log(true)
             setloginError("")
-            // login(loginObj).then((resp) => {   //then used for resolve stage of promise, grom the login async send a promise 
-            //     console.log(resp)
-            //     localStorage.setItem("token",resp.data.token);  //setitem takes two parameter name of  data , second actuall data
-            //     localStorage.setItem("userID",resp.data.data.userId);
-            //     history.push('/dashboard');
-            // }).catch((err) => {           //catch used for reject stage
-            //     console.log(err)
-            // })
+            login(loginObj).then((resp) => {   //then used for resolve stage of promise, grom the login async send a promise 
+                console.log(resp)
+                localStorage.setItem("token",resp.data.token);  //setitem takes two parameter name of  data , second actuall data
+                localStorage.setItem("userId",resp.data.data.userId);
+                history.push('/dashboard');
+            }).catch((err) => {           //catch used for reject stage
+                console.log(err)
+            })
         }  
         else if((emailRegex.test(loginObj.email)===false) && (psRegex.test(loginObj.password)===true)){
             setloginError({emailBorder:"1px solid red",emailErrorMsg:"red",psBorder:"",psErrorMsg:""})

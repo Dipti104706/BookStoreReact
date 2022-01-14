@@ -9,6 +9,7 @@ function Dashboard() {
     const[switchContainers, setSwitchContainers]= React.useState(false)
     const listenheader = () => {
             if (localStorage.getItem("token")){
+                console.log("jjjj")
                 setSwitchContainers(true)
             }            
             else{
@@ -19,8 +20,8 @@ function Dashboard() {
         <div>
             <div onLoad={listenheader}>
                 {
-                    switchContainers ? <HeaderForLogin /> :<BookHeader/>
-                    // switchContainers ? <BookHeader /> :<HeaderForLogin/>
+                    // switchContainers ? <HeaderForLogin /> :<BookHeader />
+                    switchContainers ? <BookHeader /> :<HeaderForLogin/>
                 }
             </div>
             {/* <BookHeader/>
