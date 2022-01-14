@@ -1,0 +1,34 @@
+.feedbackGet{
+    width: 720px;
+    height: 720px;
+    margin-top: 18px;
+}
+
+.feedbackfull{
+    display: flex;
+    gap: 2px;
+}
+
+.round{
+    width: 40px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: rgb(192, 189, 189);
+    color: grey;
+    font-size: 10px;
+}
+
+.feedDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.anticon svg {
+    width: 17px;
+    height: 17px;
+}
+
+.yellowStars{
+    display: flex;
+}

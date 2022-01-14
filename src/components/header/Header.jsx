@@ -44,7 +44,7 @@ function BookHeader() {
                 <Popper id={id} open={open} anchorEl={anchorEl} transition>
                                     {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={350}>
-                        <Box sx={{ border: 0, p: 0, bgcolor: 'grey' }}>
+                        <Box sx={{ border: 0, p: 0, bgcolor: 'grey',background:'rgb(255 255 255)' }}>
                             <div className="popper">
                                 <p className = "hello">Hello User,</p>
                                 <div className="division">

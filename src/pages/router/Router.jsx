@@ -4,6 +4,7 @@ import {
     Switch,
     Route
   } from "react-router-dom";
+import BookDescription from '../../components/bookdescription/BookDescription';
 import Cart from '../../components/cart/Cart';
 import Orders from '../../components/orders/Orders';
 import PleaseLogin from '../../components/pleaseLogin/PleaseLogin';
@@ -11,6 +12,7 @@ import Wishlist from '../../components/wishlist/Wishlist';
 import Dashboard from '../dashboard/Dashboard';
 import ResetPassword from '../resetPassword/ResetPassword';
 import SigninSignup from '../signinSignup/SigninSignup';
+
 
 function RouterDom() {
     return (
@@ -23,6 +25,7 @@ function RouterDom() {
                   <Route path = "/orders" component = {Orders}/>
                   <Route path = "/cart" component = {Cart}/>
                   <Route path = "/please" component = {PleaseLogin}/>
+                  <Route path = "/book" component = {BookDescription}/>
              </Switch>
         </Router>
     )

@@ -5,3 +5,20 @@
     flex-wrap: wrap;
     row-gap: 15px;
 }
+
+.mid-container1{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    left: 147px;
+}
+
+.item{
+    color: rgb(182, 181, 181);
+}
+
+.css-10w330c-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{
+    background-color: #8F2B2F;
+    color: white;
+}

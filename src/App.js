@@ -8,14 +8,16 @@ import BookDescription from './components/bookdescription/BookDescription';
 import Cart from './components/cart/Cart';
 import Address from './components/address/Address';
 import OrderSummery from './components/ordersummery/OrderSummery';
+import Feedback from './components/feedback/Feedback';
+
 
 function App() {
   return (
     <div>
       {/* <OrderSummery/> */}
-        {/* <BookDescription/> */}
         <RouterDom/>
         {/* <OrderPlaced/>    */}
+        {/* <Feedback/> */}
     </div>
   );
 }

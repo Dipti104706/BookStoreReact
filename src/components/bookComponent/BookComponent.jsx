@@ -1,11 +1,12 @@
 import React from 'react';
-import book from '../../assets/dont1.png';
 import star from '../../assets/starlogo.jpg';
 import './BookComponent.css';
+import { useHistory } from "react-router-dom";
 
 function BookComponent(props) {
+    let history = useHistory();
     return (
-        <div className = "Bookcontainer">
+        <div className = "Bookcontainer" onClick={()=>(history.push('/book'))}>
             <div class="Imagepart">
                 <img className="BookImg" src={props.allBooks.image}/>
             </div>

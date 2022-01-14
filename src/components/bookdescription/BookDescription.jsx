@@ -1,56 +1,61 @@
 import React from 'react'
-import FooterCopyrights from '../footer/Footer'
 import HeaderForLogin from '../headerforLogin/HeaderForLogin'
 import { useHistory } from "react-router-dom";
 import BookImage from '../../assets/dont1.png';
-import star from '../../assets/starlogo.jpg';
 import './BookDescription.css';
+import Feedback from '../../components/feedback/Feedback';
 
 function BookDescription() {
     let history = useHistory();
     return (
-        <div>
-            <HeaderForLogin/>
-            <div className="bookDesp">
-                <div className="top">
-                    <div className="home" onClick={()=>(history.push('/dashboard'))}> Home / </div>
-                    <div className="part1">Book(01)</div>
-                </div>
-                <div className="wholePart">
-                    <div className="imagepart">
-                        <img src={BookImage} className = "bookimge" />
-                        <div className="addto">
-                            <button  className="loginButton">ADD TO BAG</button>
-                            <button className="loginButton">WISHLIST</button>
-                        </div>
-                    </div>
-                    <br/>
-                    <div className="despPart">
-                        <div className="Detailspart">  
-                            <div className="bookName">Don't Make Me Think</div>   
-                            <div className="authorname">by Steve Krug</div>  
-                            <div className="options">
-                                <div className="ratings">
-                                    <span className="rating">4.5</span>
-                                    <img src={star} className = "starlogo" />
-                                </div>
-                                <span className = "reviewer">(20)</span>
-                            </div>                                 
-                            <div className="price">
-                                <div className="discount">Rs. 1500</div>
-                                <div className="original">Rs. 2000</div>
-                            </div>
-                            <div id="line">-</div>
-                            <div className="allBookDetails">
-                                <div className="dot2"></div>
-                                <div className="bookDet">Since Don’t Make Me Think was first published in 2000, hundreds of thousands of Web designers and developers have relied on usability guru Steve Krug’s guide to help them understand the principles of intuitive navigation and information design. Witty, commonsensical, and eminently practical, it’s one of the best-loved and most recommended books on the subject.</div>
+        <div className="MainHeader">
+        <HeaderForLogin />      
+        <p className="paths">
+            <button className = "gotohome" onClick={()=>(history.push('/dashboard'))}> Home / </button><span id="pathtobook">Book</span>
+        </p>
 
-                            </div>
-                        </div>  
-                    </div>
-                </div>
+        <div className="imagebox">
+            <img src={BookImage} alt="Image" className = "booklogo3" />
+        </div>
+        <div className="tagbuttons">          
+            <button id="addtobag">ADD TO BAG</button>       
+            <button id="wishlist"> WISHLIST</button>        
+        </div>
+        <div className = "description">
+             <div className="detailsofbook">
+                <p id="booktitle">Don't Make Me Think</p>
+                <p id ="authorbook">by Steve Krug</p>
+                <div className="ratingbox">
+                    <span>4★</span>
+             </div>
+             <span className="countreviewbook">(20)</span>
+             <span className="bookprice">Rs. 1500</span> 
+             <span className="originalprice"><s>Rs. 2000</s></span>
+             <hr className="borderline"></hr>
+             <div className="descriptionofbookdetails">
+             <ul id="caption"><li>Book Detail</li></ul>
+             <p id="Bookparagraph">Since Don’t Make Me Think was first published in 2000, hundreds of thousands of Web designers and developers have relied on usability guru Steve Krug’s guide to help them understand the principles of intuitive navigation and information design. Witty, commonsensical, and eminently practical, it’s one of the best-loved and most recommended books on the subject.</p>
+             <hr className="borderline"></hr> 
+        </div>
+
+        <div className="feedback">
+            <div className="feedback-title">
+                <p className="para-for-custfeedback">Customer Feedback</p>
             </div>
-            <FooterCopyrights/>
+            <div className="rating-pad">
+            <div className="overallrating">
+            <p className="para-for-overallrating"> Overall rating</p>
+           <div id="stars">☆ ☆ ☆ ☆ ☆ </div>
+            <div className="writereview">
+                <input className="input-for-review" type="text" placeholder="Write your review" /> 
+                <div className="submitbutton">Submit</div>
+            </div>
+        </div>
+        <Feedback/>
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
     )
 }
