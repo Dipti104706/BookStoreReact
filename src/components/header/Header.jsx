@@ -26,8 +26,8 @@ function BookHeader() {
     
       const canBeOpen = open && Boolean(anchorEl);
       const id = canBeOpen ? 'transition-popper' : undefined;
-    
-
+      
+      
     return (
         <div className="header">
             <div className = "headerside">
@@ -67,7 +67,7 @@ function BookHeader() {
                 </Popper>
             </div>
             <div className="cart">
-                <img src = {cart} className = "cartlogo"/>
+                <img src = {cart} onClick={()=>(history.push('/cart'))} className = "cartlogo"/>
                 <div>Cart</div>
             </div>            
         </div>

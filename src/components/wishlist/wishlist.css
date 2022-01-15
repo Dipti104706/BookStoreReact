@@ -51,7 +51,7 @@
 .allDescription{
     display: flex;
     flex-direction: column;
-    width: 776px;   
+    width: 656px;   
     gap:10px; 
 }
 

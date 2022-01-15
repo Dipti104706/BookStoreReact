@@ -25,7 +25,7 @@ function HeaderForLogin() {
     
       const canBeOpen = open && Boolean(anchorEl);
       const id = canBeOpen ? 'transition-popper' : undefined;
-    
+      
 
     return (
         <div className="header">

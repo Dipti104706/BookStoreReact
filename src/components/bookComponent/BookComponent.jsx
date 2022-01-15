@@ -4,9 +4,14 @@ import './BookComponent.css';
 import { useHistory } from "react-router-dom";
 
 function BookComponent(props) {
+
+    const description =() =>{
+        localStorage.setItem("BookId",props.allBooks.bookId); 
+        history.push('/book');
+    }
     let history = useHistory();
     return (
-        <div className = "Bookcontainer" onClick={()=>(history.push('/book'))}>
+        <div className = "Bookcontainer" onClick={description}>
             <div class="Imagepart">
                 <img className="BookImg" src={props.allBooks.image}/>
             </div>

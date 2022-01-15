@@ -8,9 +8,7 @@ import { getBooks } from '../../services/UserServices';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-
 function Dashboard() {
-    const[switchContainers, setSwitchContainers]= React.useState(false)
     const[bookArray, setBookArray] = React.useState([])
 
     const GetBooks =() => {
@@ -20,29 +18,34 @@ function Dashboard() {
     }).catch((err) => {
         console.log(err)
     })
-}
-    
-
-    const listenheader = () => {
-            if (localStorage.getItem("token")){
-                console.log("jjjj")
-                GetBooks();
-                setSwitchContainers(true)
-            }            
-            else{
-                setSwitchContainers(false)
-            }
     } 
 
+    React.useEffect(()=>{
+        GetBooks();     
+    },[]);
+    
     const bookList=bookArray.map((x)=>(<BookComponent key={x.bookId} allBooks={x} />))
+    if (localStorage.getItem("token")){
     return (
         <div>
-            <div onLoad={listenheader}>
-                {
-                    // switchContainers ? <HeaderForLogin /> :<BookHeader />
-                    switchContainers ? <BookHeader /> :<HeaderForLogin/>
-                }
+            <BookHeader/>
+            <div className="mid-container1">
+                    <div>Books</div>
+                    <div className="item">({bookList.length} items)</div>
+                </div>
+            <div className="mainNotesContainer" >
+                {bookList} 
             </div>
+            <Stack spacing={2} style={{marginLeft:500}}>
+                <Pagination count={10} shape="rounded" />
+            </Stack>
+            <FooterCopyrights/>
+        </div>
+    )}
+    else{
+        return (
+        <div>
+            <HeaderForLogin/>
             <div className="mid-container1">
                     <div>Books</div>
                     <div className="item">(128 items)</div>
@@ -55,7 +58,8 @@ function Dashboard() {
             </Stack>
             <FooterCopyrights/>
         </div>
-    )
+        )
+    }
 }
 
 export default Dashboard

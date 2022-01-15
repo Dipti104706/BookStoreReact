@@ -2,12 +2,29 @@ import React from 'react'
 import FooterCopyrights from '../footer/Footer'
 import BookHeader from '../header/Header';
 import './wishlist.css';
-import book from '../../assets/dont1.png';
-import { DeleteOutlined } from '@ant-design/icons';
 import { useHistory } from "react-router-dom";
+import { getWishlist } from '../../services/UserServices';
+import WishlistComponent from './wishListComponent';
 
 function Wishlist() {
     let history = useHistory()
+    const [updateWishlist,setupdateWishlist] = React.useState(false);
+    const [currentWishlist,setCurrentWishlist] = React.useState([]);
+    React.useEffect(()=>{
+        getWishlist().then((response)=>{           
+            console.log(response)
+            setCurrentWishlist(response.data.data)                        
+            }).catch(err => {console.log(err)})
+        },[updateWishlist]);
+
+    const listentoWishlist=(data)=>{
+        if(data == true){
+            setupdateWishlist(true);
+        }
+    }
+    
+    const wishListTable=currentWishlist.map((x)=>(<WishlistComponent key={x.wishlistId} listentoWishlist={listentoWishlist} allwishlist={x} />))
+        
     return (
         <div>
             <BookHeader/>
@@ -17,20 +34,9 @@ function Wishlist() {
                     <div className="part1">My Wishlist</div>
                 </div>
                 <div className="mid-container">
-                    <h3>My Wishlist(01)</h3>
+                    <h3>My Wishlist({wishListTable.length})</h3>
                 </div>
-                <div className="wishlistContainer">
-                    <img className="BookImage" src={book}/>
-                    <div className="allDescription">
-                        <div className="bookName1">Don't Make Me Think</div>   
-                        <div className="authorname1">by Steve Krug</div>                                   
-                        <div className="price1">
-                            <div className="discount1">Rs. 1500</div>
-                            <div className="original1">Rs. 2000</div>
-                        </div> 
-                    </div>
-                    <DeleteOutlined style={{color:'#a39f9f'}}/>                    
-                </div>
+                <div>{wishListTable}</div>
             </div>
             <FooterCopyrights/>
         </div>
