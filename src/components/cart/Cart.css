@@ -57,13 +57,13 @@
     outline: none;
     border-radius: 2px;
     position: relative;
-    left: 738px;
+    left: 647px;
 }
 
 .heading1{
     display: flex;
     justify-content: space-between;
-    width: 893px;
+    width: 806px;
 }
 
 .addressDetails{

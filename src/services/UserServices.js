@@ -31,7 +31,13 @@ export const Addtocart=async(obj) => {
     return response
 }
 
+export const addFeedbacks=async(obj) => {
+    let response=await axios.post("https://localhost:44329/api/Feedback/addFeedbacks",obj)
+    return response
+}
+
 export const AddtoWishlist=async(obj) => {
+    console.log(obj);
     let response=await axios.post("https://localhost:44329/api/Wishlist/addToWishlist",obj)
     return response
 }
@@ -49,6 +55,11 @@ export const getOrders = async () => {
 export const removeFromWishlist = async () => {
     console.log(localStorage.getItem("WishId"))
     let response = await axios.delete(`https://localhost:44329/api/Wishlist/deleteWishlist?wishlistId=${parseInt(localStorage.getItem("WishId"))}`)
+    return response
+}
+
+export const retrieveFeedbacks = async () => {
+    let response = await axios.get(`https://localhost:44329/api/Feedback/getFeedbacks?bookId=${parseInt(localStorage.getItem("BookId"))}`)
     return response
 }
 

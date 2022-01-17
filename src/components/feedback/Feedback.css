@@ -1,6 +1,6 @@
 .feedbackGet{
     width: 720px;
-    height: 720px;
+    height: fit-content;
     margin-top: 18px;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .round{
-    width: 40px;
+    width: 27px;
     height: 27px;
     border-radius: 50%;
     background-color: rgb(192, 189, 189);

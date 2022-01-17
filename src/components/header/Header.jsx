@@ -27,7 +27,11 @@ function BookHeader() {
       const canBeOpen = open && Boolean(anchorEl);
       const id = canBeOpen ? 'transition-popper' : undefined;
       
-      
+    const logout = () =>{
+        history.push('/dashboard');
+        localStorage.clear();
+    }
+
     return (
         <div className="header">
             <div className = "headerside">
@@ -40,13 +44,13 @@ function BookHeader() {
             </div>
             <div className="profile" onClick={handleClick}>
                 <img src = {profile} className = "mainprofilelogo"/>
-                <div>Dipti</div>
+                <div>{localStorage.getItem("Name")}</div>
                 <Popper id={id} open={open} anchorEl={anchorEl} transition>
                                     {({ TransitionProps }) => (
                     <Fade {...TransitionProps} timeout={350}>
                         <Box sx={{ border: 0, p: 0, bgcolor: 'grey',background:'rgb(255 255 255)' }}>
                             <div className="popper">
-                                <p className = "hello">Hello User,</p>
+                                <p className = "hello">Hello {localStorage.getItem("Name")},</p>
                                 <div className="division">
                                     <img src = {person} alt = "profile" className = "icons"/>
                                     <p className = "tags">Profile</p>
@@ -59,7 +63,7 @@ function BookHeader() {
                                     <img src = {heart} alt = "profile" className = "icons"/>
                                     <p className = "tags" onClick={()=>(history.push('/wishlist'))}>My Wishlist</p>
                                 </div>
-                                <button className = "logout">Logout</button>
+                                <button className = "logout" onClick={logout}>Logout</button>
                             </div>
                         </Box>
                     </Fade>

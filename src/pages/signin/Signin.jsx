@@ -30,6 +30,8 @@ function Signin(props) {
                 console.log(resp)
                 localStorage.setItem("token",resp.data.token);  //setitem takes two parameter name of  data , second actuall data
                 localStorage.setItem("userId",resp.data.data.userId);
+                localStorage.setItem("Name",resp.data.data.name);
+                localStorage.setItem("Number",resp.data.data.phone);
                 history.push('/dashboard');
             }).catch((err) => {           //catch used for reject stage
                 console.log(err)

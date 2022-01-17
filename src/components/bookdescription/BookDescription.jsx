@@ -1,18 +1,28 @@
 import React from 'react'
 import HeaderForLogin from '../headerforLogin/HeaderForLogin'
 import { useHistory } from "react-router-dom";
-import BookImage from '../../assets/dont1.png';
 import './BookDescription.css';
 import Feedback from '../../components/feedback/Feedback';
-import { getBookById,Addtocart,AddtoWishlist } from '../../services/UserServices';
+import { getBookById,Addtocart,AddtoWishlist ,retrieveFeedbacks,addFeedbacks} from '../../services/UserServices';
+import Rating from '@mui/material/Rating';
 
 function BookDescription() {
     let history = useHistory();
 
     const [currentBook,setcurrentBook] = React.useState([]);
+    const [feedbacks,setFeedbacks] = React.useState([]);
+    const [addFeedbacksObj,setAddFeedbacksObj] = React.useState({userId:parseInt(localStorage.getItem("userId")),
+                bookId:parseInt(localStorage.getItem("BookId")),comments:"",ratings:0});
+    const [value, setValue] = React.useState(2);
+
+    const takeComments=(e)=>{
+        setAddFeedbacksObj({...addFeedbacksObj,comments:e.target.value})
+    }
+
     React.useEffect(()=>{
             getBookById().then((response)=>{
                 setcurrentBook(response.data.data)
+                GetFeedbacks();
             }).catch(err => {console.log(err)})
         },[]);
     
@@ -23,7 +33,7 @@ function BookDescription() {
             }
             Addtocart(obj).then((response)=>{
                 console.log(response);
-                alert("Book added to wishlist");
+                alert("Book added to cart");
             }).catch(err => {
                 console.log(err);
             })
@@ -41,6 +51,26 @@ function BookDescription() {
                 console.log(err);
             })
     }
+
+    const GetFeedbacks =() =>{        
+            retrieveFeedbacks().then((response)=>{
+                console.log(response);
+                setFeedbacks(response.data.data)
+            }).catch(err => {
+                console.log(err);
+            })
+    }
+
+    const addFeedback=() =>{        
+        addFeedbacks(addFeedbacksObj).then((response)=>{
+            console.log(response);
+            GetFeedbacks();
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    const feedbackList=feedbacks.map((x)=>(<Feedback key={x.feedbackId} allFeedbacks={x} />))
 
     return (
         <div className="MainHeader">
@@ -80,13 +110,20 @@ function BookDescription() {
             <div className="rating-pad">
             <div className="overallrating">
             <p className="para-for-overallrating"> Overall rating</p>
-           <div id="stars">☆ ☆ ☆ ☆ ☆ </div>
+            <Rating
+                name="simple-controlled"
+                value={value}
+                onChange={(event, newValue) => {
+                    setValue(newValue);
+                    setAddFeedbacksObj({...addFeedbacksObj,ratings:newValue})                    
+                }}
+            />
             <div className="writereview">
-                <input className="input-for-review" type="text" placeholder="Write your review" /> 
-                <div className="submitbutton">Submit</div>
+                <input className="input-for-review" type="text" placeholder="Write your review" onChange={takeComments}/> 
+                <div className="submitbutton" onClick={addFeedback}>Submit</div>
             </div>
         </div>
-        <Feedback/>
+        <div>{feedbackList}</div>
         </div>
         </div>
         </div>
