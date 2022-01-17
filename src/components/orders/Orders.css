@@ -30,6 +30,6 @@
 .orderDescription{
     display: flex;
     flex-direction: column;
-    width: 640px;   
+    width: 524px;   
     gap:10px;
 }
