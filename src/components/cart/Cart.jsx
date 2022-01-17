@@ -1,19 +1,22 @@
 import React from 'react'
 import FooterCopyrights from '../footer/Footer'
 import HeaderForLogin from '../headerforLogin/HeaderForLogin'
-import book from '../../assets/dont1.png';
 import map from '../../assets/images (1).png';
 import { useHistory } from "react-router-dom";
-import { CaretDownOutlined,PlusCircleOutlined,MinusCircleOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 import './Cart.css';
 import Address from '../address/Address';
 import OrderSummery from '../ordersummery/OrderSummery';
+import CartComponent from './CartComponent';
+import { GetCartDetails } from '../../services/UserServices';
 
 
 function Cart() {
     let history = useHistory();
     const[switchContainers, setSwitchContainers]= React.useState(true)
-    const[switchorders, setSwitchOrders]= React.useState(true)
+    const[switchorders, setSwitchOrders]= React.useState(true) 
+    const [cartList,setCartList] = React.useState([]);
+    
     const listenAddress = () => {
         setSwitchContainers(false)
     } 
@@ -33,8 +36,17 @@ function Cart() {
             setSwitchOrders(true)
         }
     }
-    
+    React.useEffect(()=>{
+        GetCartDetails().then((response)=>{
+            console.log(response.data.data)
+            setCartList(response.data.data)
+        }).
+        catch(err => {
+            console.log(err)
+        })
+    },[]);
 
+    const cartTable=cartList.map((x)=>(<CartComponent key={x.cartID} allCartList={x} />))
     return (
         <div>
             <HeaderForLogin/>
@@ -45,31 +57,15 @@ function Cart() {
                 </div>
                 <div className="placeOrder">
                     <div className="heading1">
-                        <h3 style={{marginLeft:29}}>My Cart(01)</h3>
+                        <h3 style={{marginLeft:29}}>My Cart({cartList.length})</h3>
                         <div className="location">
                             <img className="map" src={map}/>
                             <div className="current">Use current location</div>
                             <CaretDownOutlined style={{color:'grey'}}/>
                         </div>
-                    </div>
-                    
-                    <div className="wishlistContainer1">
-                        <img className="BookImage" src={book}/>
-                        <div className="orderDescription1">
-                            <div className="bookName1">Don't Make Me Think</div>   
-                            <div className="authorname1">by Steve Krug</div>                                   
-                            <div className="price1">
-                                <div className="discount1">Rs. 1500</div>
-                                <div className="original1">Rs. 2000</div>
-                            </div>
-                            <div className="quantity">
-                                <MinusCircleOutlined style={{color:'grey'}}/>
-                                <div className="one">  1</div>
-                                <PlusCircleOutlined style={{color:'grey'}}/>
-                                <div style={{fontSize:10, marginLeft:14}}>Remove</div>
-                            </div> 
-                        </div>
-                                                             
+                    </div>                   
+                    <div className="cartDiv">
+                         {cartTable}                                    
                     </div>
                     <button className="continueShopping1" >PLACE ORDER</button> 
                 </div>

@@ -54,8 +54,8 @@ function BookDescription() {
 
     const GetFeedbacks =() =>{        
             retrieveFeedbacks().then((response)=>{
-                console.log(response);
-                setFeedbacks(response.data.data)
+                    console.log(response);
+                    setFeedbacks(response.data.data)              
             }).catch(err => {
                 console.log(err);
             })

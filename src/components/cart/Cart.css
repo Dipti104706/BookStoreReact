@@ -22,6 +22,10 @@
     height: 150px;
     align-items: center;
 }
+
+.cartDiv{
+    height: auto;
+}
 .orderDescription1{
     display: flex;
     flex-direction: column;
@@ -30,7 +34,7 @@
 }
 .placeOrder{
     display: flex;
-    height: 222px;
+    height: fit-content;
     flex-direction: column;
     border: 1px solid rgb(201, 199, 199);
 }

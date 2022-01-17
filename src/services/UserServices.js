@@ -52,6 +52,11 @@ export const getOrders = async () => {
     return response
 }
 
+export const GetCartDetails = async () => {
+    let response = await axios.get(`https://localhost:44329/api/Cart/getCartDetails?userId=${parseInt(localStorage.getItem("userId"))}`)
+    return response
+}
+
 export const removeFromWishlist = async () => {
     console.log(localStorage.getItem("WishId"))
     let response = await axios.delete(`https://localhost:44329/api/Wishlist/deleteWishlist?wishlistId=${parseInt(localStorage.getItem("WishId"))}`)
