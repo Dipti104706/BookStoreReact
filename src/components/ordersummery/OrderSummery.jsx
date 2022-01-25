@@ -1,11 +1,30 @@
 import React from 'react'
-import book from '../../assets/dont1.png';
 import './OrderSummery.css';
+import { useHistory } from "react-router-dom";
+import { AddOrder } from '../../services/UserServices';
+
 
 function OrderSummery(props) {
+    let history = useHistory();
     const listencart =() =>{
         props.listenOrderDetails(true);
     }    
+
+    const addOrder=() =>{
+        let obj = {
+                userId:parseInt(localStorage.getItem("userId")),
+                addressId:parseInt(localStorage.getItem("AddressId")), 
+                bookId:props.allCartList.bookId,
+                bookQuantity:props.count
+            }
+            AddOrder(obj).then((resp) => {
+                console.log(resp)  
+                history.push('/orderplaced')   
+            }).catch((err) => {
+                console.log(err)
+            })      
+    }
+
     return (
         <div className="Ordersummery">
                     <div className="heading1">
@@ -13,17 +32,17 @@ function OrderSummery(props) {
                     </div>
                     
                     <div className="wishlistContainer1">
-                        <img className="BookImage" src={book}/>
+                        <img className="BookImage" src={props.allCartList.bookModel.image}/>
                         <div className="orderDescription1">
-                            <div className="bookName1">Don't Make Me Think</div>   
-                            <div className="authorname1">by Steve Krug</div>                                   
+                            <div className="bookName1">{props.allCartList.bookModel.bookName}</div>   
+                            <div className="authorname1">{props.allCartList.bookModel.authorName}</div>                                   
                             <div className="price1">
-                                <div className="discount1">Rs. 1500</div>
-                                <div className="original1">Rs. 2000</div>
+                                <div className="discount1">Rs. {props.allCartList.bookModel.discountPrice}</div>
+                                <div className="original1">Rs. {props.allCartList.bookModel.originalPrice}</div>
                             </div> 
                         </div>                                                             
                     </div>
-                    <button className="continueShopping1" >CHECKOUT</button> 
+                    <button className="continueShopping1" onClick={addOrder}>CHECKOUT</button> 
                 </div>
     )
 }

@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import BookDescription from '../../components/bookdescription/BookDescription';
 import Cart from '../../components/cart/Cart';
+import OrderPlaced from '../../components/orderplaced/OrderPlaced';
 import Orders from '../../components/orders/Orders';
 import PleaseLogin from '../../components/pleaseLogin/PleaseLogin';
 import Wishlist from '../../components/wishlist/Wishlist';
@@ -26,6 +27,7 @@ function RouterDom() {
                   <Route path = "/cart" component = {Cart}/>
                   <Route path = "/please" component = {PleaseLogin}/>
                   <Route path = "/book" component = {BookDescription}/>
+                  <Route path = "/orderplaced" component = {OrderPlaced}/>
              </Switch>
         </Router>
     )
